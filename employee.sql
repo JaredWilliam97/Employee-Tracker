@@ -3,6 +3,20 @@ CREATE DATABASE employeeDB;
 
 USE employeeDB;
 
+CREATE TABLE department (
+    id INT AUTOiNCREMENNT PRIMARY KEY,
+    title VARCAHR(30),
+    slary DECIMAL,
+    department_id INT
+)
+
+CREATE TABLE role (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    title, VARCAHR(30),
+    slary DECIMAL,
+    department_id INT
+)
+
 CREATE TABLE employee (
   id INT AUTO_INCREMENT PRIMARY KEY,
   first_name VARCHAR(30),
