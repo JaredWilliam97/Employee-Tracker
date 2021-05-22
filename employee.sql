@@ -4,15 +4,15 @@ CREATE DATABASE employeeDB;
 USE employeeDB;
 
 CREATE TABLE department (
-    id INT AUTOiNCREMENNT PRIMARY KEY,
-    title VARCAHR(30),
+    id INT AUTO_INCREMENNT PRIMARY KEY,
+    title VARCHAR(30),
     slary DECIMAL,
     department_id INT
 )
 
 CREATE TABLE role (
     id INT AUTO_INCREMENT PRIMARY KEY,
-    title, VARCAHR(30),
+    title, VARCHAR(30),
     slary DECIMAL,
     department_id INT
 )
