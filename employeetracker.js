@@ -70,6 +70,18 @@ const viewDepartments = () => {
   });
 };
 
+const viewRoles = () => {
+  let insertSQL = "SELECT * FROM role";
+  connectToSQL.query(insertSQL, function (err, res) {
+    res.forEach((role) => {
+      console.log(
+        `ID: ${role.id} | Title: ${role.title} | Salary: ${role.salary} | Department ID: ${role.departmentID}`
+      );
+    });
+    menuPrompt();
+  });
+};
+
 const viewEmployees = () => {
   let insertSQL = "SELECT * FROM employee";
   connectToSQL.query(insertSQL, function (err, res) {
