@@ -69,3 +69,15 @@ const viewDepartments = () => {
     menuPrompt();
   });
 };
+
+const viewEmployees = () => {
+  let insertSQL = "SELECT * FROM employee";
+  connectToSQL.query(insertSQL, function (err, res) {
+    res.forEach((employee) => {
+      console.log(
+        `ID: ${employee.id} | Name: ${employee.firstName} ${employee.lastName} | Role ID: ${employee.roleID} | Manager ID: ${employee.managerID}`
+      );
+    });
+    menuPrompt();
+  });
+};
