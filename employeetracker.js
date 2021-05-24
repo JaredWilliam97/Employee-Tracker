@@ -93,3 +93,54 @@ const viewEmployees = () => {
     menuPrompt();
   });
 };
+
+const addEmployee = () => {
+  connectToSQL.query("SELECT * FROM role", ((err, res) => {
+      if(err) throw (err);
+      inquirer.prompt([
+          {
+              name: "firstName",
+              type: "input",
+              message: "Insert First Name",
+          },
+          {
+              name: "lastName",
+              type: "input",
+              message: "Insert Last Name",
+          },
+          {
+              name: "roleName",
+              type: "list",
+              message: "Insert Role",
+              choices: function() {
+                  // using forEach to create a new array for each title in role
+                  getRoleList = [];
+                  res.forEach(res => {
+                      getRoleList.push(res.title);
+                  });
+                  return getRoleList;
+              }
+          }
+      ])
+      .then((answer)   => {
+
+connectToSQL.query("SELECT * FROM role", function(err, res)  {
+if (err) throw (err);
+let filterRole = res.filter((res)  => {
+  return res.title == role;
+
+
+
+}
+
+
+
+
+)
+
+
+})
+
+
+
+      })
