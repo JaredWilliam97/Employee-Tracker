@@ -122,25 +122,48 @@ const addEmployee = () => {
               }
           }
       ])
-      .then((answer)   => {
-
-connectToSQL.query("SELECT * FROM role", function(err, res)  {
-if (err) throw (err);
-let filterRole = res.filter((res)  => {
-  return res.title == role;
-
-
-
-}
-
-
-
-
-)
-
-
-})
-
-
-
+      .then((answer) => {
+        const role = answer.roleName;
+        // res.filter will get rid of other unwanted titles. 
+        connectToSQL.query("SELECT * FROM role", function(err, res) {
+            if(err) throw (err);
+            let filterRole = res.filter((res) => {
+                return res.title == role;
+            })
+            let roleID = filterRole[0].id;
+            connectToSQL.query("SELECT * FROM employee", function(err, res) {
+                inquirer.prompt([
+                    {
+                        name: "manager",
+                        type: 'list',
+                        message: "Insert Manager",
+                        choices: function() {
+                            getManagerList = [];
+                            res.forEach(res => {
+                                getManagerList.push(res.lastName)
+                            })
+                            return getManagerList;
+                        }
+                    }
+                ])
+                .then((managerAnswer) => {
+                  const manager = managerAnswer.manager;
+                  connectToSQL.query("SELECT * FROM employee", function(err, res){
+                      if(err) throw (err);
+                      let filterManager = res.filter((res) => {
+                          return res.lastName == manager;
+                      })
+                      let managerID = filterManager[0].id;
+                      let insertSQL = "INSERT INTO employee (firstName, lastName, roleID, managerID) VALUES (?, ?, ?, ?)";
+                      let values = [answer.firstName, answer.lastName, roleID, managerID]
+                      connectToSQL.query(insertSQL, values, function(err, res, fields) {
+                          console.log('Added');
+                      })
+                      viewEmployees();
+                  })
+              })
+          })
       })
+  })
+}))
+ 
