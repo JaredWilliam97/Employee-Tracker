@@ -166,4 +166,33 @@ const addEmployee = () => {
       })
   })
 }))
- 
+const addRole = () => {
+  connectToSQL.query("SELECT * FROM department", ((err, res) => {
+      if(err) throw (err);
+      inquirer.prompt([
+          {
+              name: "title",
+              type: "input",
+              message: "Insert Title",
+          },
+          {
+              name: "salary",
+              type: "input",
+              message: "Insert Salary",
+          },
+          {
+              name: "departmentName",
+              type: "list",
+              message: "Insert Department Name",
+              choices: function() {
+                  let getDepartmentList = [];
+                  res.forEach(res => {
+                    
+                    
+                          res.name
+                      );
+                  })
+                  return getDepartmentList;
+              }
+          }
+      ])
