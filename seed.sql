@@ -20,12 +20,12 @@ INSERT INTO role (id, title, salary, departmentID) VALUES
 
 
 INSERT INTO employee (id, firstName, lastName, roleID manager_id) VALUES 
-("Jared", "Smith", 1, 3),
-("Jayme", "Olson", 2, 1),
-("Bill", "Johnson", 3, NULL),
+("Jared", "Smith", 1, 3, null),
+("Jayme", "Olson", 2, 1, null),
+("Bill", "Johnson", 3, 6),
 ("Andrew", "Dault", 4, 3),
-("Ben", "Gordon", 5, NULL),
-("Josh", "Meyers", 6, NULL),
-("Kristin", "Menkie", 7, 6),
-("Rachel", "Veeder", 4, 4);
+("Ben", "Gordon", 5, 4),
+("Josh", "Meyers", 6, 8),
+("Kristin", "Menkie", 7, 9),
+("Rachel", "Veeder", 4, 7);
 

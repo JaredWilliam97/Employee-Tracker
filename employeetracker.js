@@ -8,14 +8,19 @@ const express = require("express");
 const app = express();
 const PORT = process.env.PORT || 3306;
 
-const connectToSQL = mysql.createConnection({
+// connectToSQL.connect((err) => {
+//   if (err) throw err;
+//   menuPrompt();
+// });
+
+const connection = mysql.createConnection({
   host: "localhost",
   port: 3306,
   user: "root",
   password: "Jerrsnuf!0",
   database: "employeeDB",
 });
-
+// initiated the prompt
 init();
 function init() {
   inquirer
@@ -148,6 +153,69 @@ function addDepartment() {
       connection.query(
         "INSERT INTO department (name) VALUES (?)",
         [answer.DepartmentName],
+        function (err, res) {
+          if (err) throw err;
+          console.table(res);
+          init();
+        }
+      );
+    });
+}
+
+function addRole() {
+  inquirer
+    .prompt([
+      {
+        type: "input",
+        message: "Role title?",
+        name: "title",
+      },
+      {
+        type: "input",
+        message: "Salary?",
+        name: "salary",
+      },
+      {
+        type: "input",
+        message: "Department ID?",
+        name: "deptID",
+      },
+    ])
+    .then(function (answer) {
+      connection.query(
+        "INSERT INTO role (title, salary, department_id) VALUES (?)",
+        [answer.title, answer.salary, answer.deptID],
+        function (err, res) {
+          if (err) throw err;
+          console.table(res);
+          init();
+        }
+      );
+    });
+}
+function updateEmployeeRole() {
+  inquirer
+    .prompt([
+      {
+        type: "input",
+        message: "What is the first name of employee do you want to update?",
+        name: "employeeOne",
+      },
+      {
+        type: "input",
+        message: "What is the last name of employee do you want to update?",
+        name: "employeeTwo",
+      },
+      {
+        type: "input",
+        message: "what role ID do you want to change the employee to?",
+        name: "roleid",
+      },
+    ])
+    .then(function (answer) {
+      connection.query(
+        "UPDATE employee SET role_id=? WHERE first_name=? AND last_name=?",
+        [answer.employeeOne, answer.employeeTwo, answer.roleid],
         function (err, res) {
           if (err) throw err;
           console.table(res);
