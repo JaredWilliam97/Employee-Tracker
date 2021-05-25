@@ -199,17 +199,17 @@ function updateEmployeeRole() {
     .prompt([
       {
         type: "input",
-        message: "What is the first name of employee do you want to update?",
+        message: "What is the first name of employee do you want to change?",
         name: "employeeOne",
       },
       {
         type: "input",
-        message: "What is the last name of employee do you want to update?",
+        message: "What is the last name of employee do you want to change?",
         name: "employeeTwo",
       },
       {
         type: "input",
-        message: "what role ID do you want to change the employee to?",
+        message: "What role ID do you want to change the employee to?",
         name: "roleid",
       },
     ])
