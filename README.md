@@ -1,4 +1,18 @@
-# Employee-Tracker# Unit 12 MySQL Homework: Employee Tracker
+Employee Tracker
+
+
+Please visit this link to view video:
+
+
+
+
+
+https://drive.google.com/file/d/1JPtOjsG410ysqtnL2LxnxcrPLLyKq0yC/view?usp=sharing
+
+
+
+
+
 
 In this project I built a solution for managing a company's employees using node, inquirer, and MySQL.
 
