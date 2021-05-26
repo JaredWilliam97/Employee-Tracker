@@ -20,6 +20,7 @@
   "dependencies": {
     "console.table": "^0.10.0",
     "constant-db": "^2.0.4",
+    "dotenv": "^10.0.0",
     "express": "^4.17.1",
     "inquirer": "^8.1.0",
     "mysql": "^2.18.1"

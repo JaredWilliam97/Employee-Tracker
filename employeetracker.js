@@ -18,7 +18,7 @@ const connection = mysql.createConnection({
   port: 3306,
   user: "root",
   password: "Jerrsnuf!0",
-  database: "employeeDB",
+  database: "employeedb",
 });
 // initiated the prompt
 init();
