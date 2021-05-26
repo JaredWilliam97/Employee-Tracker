@@ -1,4 +1,6 @@
-# Employee-Tracker# Unit 12 MySQL Homework: Employee Tracker
+Employee Tracker
+
+
 Please visit this link to view video:
 
 
